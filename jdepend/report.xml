@@ -1,0 +1,421 @@
+<?xml version="1.0"?>
+<JDepend>
+    <Packages>
+
+        <Package name="composite">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>1</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="MaterialTreeTestScenario.java">
+                    composite.MaterialTreeTestScenario
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="data">
+            <Stats>
+                <TotalClasses>12</TotalClasses>
+                <ConcreteClasses>10</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>3</Ce>
+                <A>0.17</A>
+                <I>0.75</I>
+                <D>0.08</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="AreaInformation.java">
+                    data.AreaInformation
+                </Class>
+                <Class sourceFile="ResponderInformation.java">
+                    data.ResponderInformation
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Action.java">
+                    data.Action
+                </Class>
+                <Class sourceFile="AreaDb.java">
+                    data.AreaDb
+                </Class>
+                <Class sourceFile="AreaDb.java">
+                    data.AreaDb$1
+                </Class>
+                <Class sourceFile="AreaDb.java">
+                    data.AreaDb$Area
+                </Class>
+                <Class sourceFile="AreaDb.java">
+                    data.AreaDb$AreaRecord
+                </Class>
+                <Class sourceFile="Capability.java">
+                    data.Capability
+                </Class>
+                <Class sourceFile="MaterialDb.java">
+                    data.MaterialDb
+                </Class>
+                <Class sourceFile="MaterialDb.java">
+                    data.MaterialDb$MaterialRecord
+                </Class>
+                <Class sourceFile="ResponderDb.java">
+                    data.ResponderDb
+                </Class>
+                <Class sourceFile="ResponderDb.java">
+                    data.ResponderDb$Responder
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>planning</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="java.awt">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.awt.event">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.io">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.lang">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.util">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.swing">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="mvc">
+            <Stats>
+                <TotalClasses>6</TotalClasses>
+                <ConcreteClasses>6</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>7</Ce>
+                <A>0</A>
+                <I>0.78</I>
+                <D>0.22</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AdminView.java">
+                    mvc.AdminView
+                </Class>
+                <Class sourceFile="AdminView.java">
+                    mvc.AdminView$CloseListener
+                </Class>
+                <Class sourceFile="ResponderView.java">
+                    mvc.ResponderView
+                </Class>
+                <Class sourceFile="ResponderView.java">
+                    mvc.ResponderView$1
+                </Class>
+                <Class sourceFile="ResponderView.java">
+                    mvc.ResponderView$CloseListener
+                </Class>
+                <Class sourceFile="WERSController.java">
+                    mvc.WERSController
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.awt</Package>
+                <Package>java.awt.event</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>javax.swing</Package>
+                <Package>planning</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>planning</Package>
+                <Package>scenarios</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="planning">
+            <Stats>
+                <TotalClasses>9</TotalClasses>
+                <ConcreteClasses>9</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>5</Ce>
+                <A>0</A>
+                <I>0.83</I>
+                <D>0.17</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Absorbents.java">
+                    planning.Absorbents
+                </Class>
+                <Class sourceFile="Cautions.java">
+                    planning.Cautions
+                </Class>
+                <Class sourceFile="DefaultPlan.java">
+                    planning.DefaultPlan
+                </Class>
+                <Class sourceFile="Interview.java">
+                    planning.Interview
+                </Class>
+                <Class sourceFile="Plan.java">
+                    planning.Plan
+                </Class>
+                <Class sourceFile="Planner.java">
+                    planning.Planner
+                </Class>
+                <Class sourceFile="ResponseState.java">
+                    planning.ResponseState
+                </Class>
+                <Class sourceFile="ResponseState.java">
+                    planning.ResponseState$1
+                </Class>
+                <Class sourceFile="SpillCase.java">
+                    planning.SpillCase
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>data</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>mvc</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>mvc</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="scenarios">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>2</Ce>
+                <A>0</A>
+                <I>0.67</I>
+                <D>0.33</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="OneView.java">
+                    scenarios.OneView
+                </Class>
+                <Class sourceFile="TwoView.java">
+                    scenarios.TwoView
+                </Class>
+                <Class sourceFile="TwoViewAdmin.java">
+                    scenarios.TwoViewAdmin
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>mvc</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>wers</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="spillCases">
+            <Stats>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>0</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>1</Ce>
+                <A>1</A>
+                <I>1</I>
+                <D>1</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="Absorbent.java">
+                    spillCases.Absorbent
+                </Class>
+                <Class sourceFile="Caution.java">
+                    spillCases.Caution
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="wers">
+            <Stats>
+                <TotalClasses>5</TotalClasses>
+                <ConcreteClasses>5</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>6</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="WERS.java">
+                    wers.WERS
+                </Class>
+                <Class sourceFile="WERS.java">
+                    wers.WERS$1
+                </Class>
+                <Class sourceFile="WERS.java">
+                    wers.WERS$2
+                </Class>
+                <Class sourceFile="WERS.java">
+                    wers.WERS$3
+                </Class>
+                <Class sourceFile="WERS.java">
+                    wers.WERS$4
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.awt</Package>
+                <Package>java.awt.event</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>javax.swing</Package>
+                <Package>scenarios</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="wersv1">
+            <Stats>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>2</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="WERS.java">
+                    wersv1.WERS$1
+                </Class>
+                <Class sourceFile="WERS.java">
+                    wersv1.WERS$2
+                </Class>
+                <Class sourceFile="WERS.java">
+                    wersv1.WERS$3
+                </Class>
+                <Class sourceFile="WERS.java">
+                    wersv1.WERS$4
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.awt.event</Package>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+    </Packages>
+
+    <Cycles>
+        <Package Name="mvc">
+            <Package>planning</Package>
+            <Package>mvc</Package>
+        </Package>
+
+        <Package Name="planning">
+            <Package>mvc</Package>
+            <Package>planning</Package>
+        </Package>
+
+        <Package Name="scenarios">
+            <Package>mvc</Package>
+            <Package>planning</Package>
+            <Package>mvc</Package>
+        </Package>
+
+        <Package Name="wers">
+            <Package>scenarios</Package>
+            <Package>mvc</Package>
+            <Package>planning</Package>
+            <Package>mvc</Package>
+        </Package>
+
+    </Cycles>
+</JDepend>
