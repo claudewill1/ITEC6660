@@ -10,9 +10,11 @@ import java.awt.BorderLayout;
 import java.awt.Frame;
 import java.awt.event.WindowEvent; 		//for CloseListener()
 import java.awt.event.WindowAdapter; 	//for CloseListener()
+import java.util.HashMap;
 import java.util.Observable; 			//for update();
 
 import javax.swing.JTextArea;
+import planning.Plan;
 
 
 
@@ -20,7 +22,11 @@ import javax.swing.JTextArea;
 public class AdminView implements java.util.Observer {
 
 	// attributes as must be visible within class
-	private JTextArea responsejTextArea1;
+        // CHANGED for OBSERVER IMPLEMENTATION    
+	private JTextArea responseArea;
+        // CHANGED for OBSERVER IMPLEMENTATION
+        private WERSController controller;
+        private AdminView adminView;
 /**
  * Construct an Administrator view
  */
@@ -39,9 +45,9 @@ public class AdminView implements java.util.Observer {
         frame.setPreferredSize(new java.awt.Dimension(557, 277));
         frame.setTitle("WERS Admin View");
         {
-        	responsejTextArea1 = new JTextArea();
-        	frame.add(responsejTextArea1, BorderLayout.CENTER);
-        	responsejTextArea1.setPreferredSize(new java.awt.Dimension(557, 95));
+        	responseArea = new JTextArea();
+        	frame.add(responseArea, BorderLayout.CENTER);
+        	responseArea.setPreferredSize(new java.awt.Dimension(557, 95));
         }
 
 	}
@@ -49,9 +55,21 @@ public class AdminView implements java.util.Observer {
 	/**
 	 *  Called from the Model(s) (i.e. plans with changes
 	 */
+        // CHANGED for OBSERVER IMPLEMENTATION
 	public void update(Observable obs, Object obj) {
+            System.err.println("Update from " + obs.hashCode() + " to " + this);
+            System.err.println(obj + "\n END OF MSG");
+            responseArea.setLineWrap(true);
+            responseArea.setText((String) obj);
 	} 
-
+// CHANGED for OBSERVER IMPLEMENTATION
+// I don't think this is needed
+/*    public void addController(WERSController myController) {
+        adminView.controller = myController;
+        
+        
+    }
+*/
 	public static class CloseListener extends WindowAdapter {
 		public void windowClosing(WindowEvent e) {
 			e.getWindow().setVisible(false);
@@ -60,7 +78,7 @@ public class AdminView implements java.util.Observer {
 	}
 
 	public void init(String viewsData) {
-		responsejTextArea1.setText(viewsData);
+		responseArea.setText(viewsData);
 	}
 
 } 

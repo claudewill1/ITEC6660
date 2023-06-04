@@ -38,11 +38,12 @@ public class WERSController {
 		}
 	}
         
-        // CHANGED for OBSERVER IMPLEMENTATION
-        public void addView(AdminView av){
+        
+		// CHANGED for OBSERVER IMPLEMENTATION
+		/*public void addView(AdminView av){
             adminViewPlanMap.put(av,null);
             System.err.println(" adding admin view " + av + " to " + this);
-        }
+        }*/
 	/**
 	 * 
 	 * @param view
@@ -81,5 +82,8 @@ public class WERSController {
 
 	}
 
-        
+     // CHANGED for OBSERVER IMPLEMENTATION
+        public void setAdminView(AdminView adminView) {
+            this.adminView = adminView;
+        }   
 }

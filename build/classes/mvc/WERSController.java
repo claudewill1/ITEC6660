@@ -19,8 +19,9 @@ public class WERSController {
 	
 	/** each responder View has own plan so we keep a map from responder to plan - not exactly standard MVC! */
 	HashMap<ResponderView, Plan> viewPlanMap = new HashMap<ResponderView, Plan>();
-
-	private AdminView adminView = null;
+        // CHANGED for OBSERVER IMPLEMENTATION
+        HashMap<AdminView, Plan> adminViewPlanMap = new HashMap<AdminView, Plan>();
+	private AdminView adminView = new AdminView();
 
 	public WERSController() {
 		System.err.println("Controller()");
@@ -32,10 +33,17 @@ public class WERSController {
 		System.err.println(" adding view" + view + " to " + this);
 		viewPlanMap.put(view, null);
 		if (adminView != null){
+                     // CHANGED for OBSERVER IMPLEMENTATION
 			adminView.update(null, (Object)"new responder");
 		}
 	}
-
+        
+        
+		// CHANGED for OBSERVER IMPLEMENTATION
+		/*public void addView(AdminView av){
+            adminViewPlanMap.put(av,null);
+            System.err.println(" adding admin view " + av + " to " + this);
+        }*/
 	/**
 	 * 
 	 * @param view
@@ -57,20 +65,25 @@ public class WERSController {
 			Plan plan = planner.getPlan(responder, material, size);
 			plan.addObserver(view);                               // let view observe the plan
 			//  un-comment net line to see MVC action
-			//System.err.println("\nAdded observer " + view + " to plan "
-			//		+ plan.getClass().getSuperclass().toString());
+			System.err.println("\nAdded observer " + view + " to plan "
+					+ plan.getClass().getSuperclass().toString());
 			viewPlanMap.put(view, plan);
 			if (adminView != null) {
+                            // CHANGED for OBSERVER IMPLEMENTATION
 				plan.addObserver(adminView);
 				// un-comment to watch observer connection
-				//System.err.println("\nAdded observer " + adminView
-				//		+ " to plan " + plan.getClass().getSuperclass().toString());
+				System.err.println("\nAdded observer " + adminView
+					+ " to plan " + plan.getClass().getSuperclass().toString());
 			} 
 			plan.change();
 		} else {
-			// TODO: add state stuff here later
+			
 		}
 
 	}
 
+     // CHANGED for OBSERVER IMPLEMENTATION
+        public void setAdminView(AdminView adminView) {
+            this.adminView = adminView;
+        }   
 }

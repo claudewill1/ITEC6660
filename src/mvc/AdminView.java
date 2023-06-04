@@ -63,12 +63,13 @@ public class AdminView implements java.util.Observer {
             responseArea.setText((String) obj);
 	} 
 // CHANGED for OBSERVER IMPLEMENTATION
-    public void addController(WERSController myController) {
+// I don't think this is needed
+/*    public void addController(WERSController myController) {
         adminView.controller = myController;
         
         
     }
-
+*/
 	public static class CloseListener extends WindowAdapter {
 		public void windowClosing(WindowEvent e) {
 			e.getWindow().setVisible(false);

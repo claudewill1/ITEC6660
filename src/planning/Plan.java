@@ -77,7 +77,7 @@ public class Plan extends java.util.Observable {
      * simple Factory Method Instructor note: comment out 'synchronized' to
      * restore the race condition
      */
-    public static Plan buildActionPlan(Planner planner,
+    public static synchronized Plan buildActionPlan(Planner planner,
             Interview interview) {
         System.err.println("Building plan for " + interview);
         String contact = interview.firstName + " " + interview.lastName;

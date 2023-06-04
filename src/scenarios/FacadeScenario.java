@@ -16,7 +16,8 @@ public class FacadeScenario {
     public static void twoView(String[] args){
         TwoView.main(args);
     }
-    public static void twoViewAdmin(String[] args){
-        TwoViewAdmin.main(args);
-    }
+    // CHANGED for OBSERVER IMPLEMENTATION
+   public static void twoViewAdmin(String[] args){
+       TwoViewAdmin.generateView(args);
+   }
 }

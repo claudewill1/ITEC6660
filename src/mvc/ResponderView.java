@@ -24,6 +24,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import planning.Plan;
+
 
 import planning.SpillCase;
 
@@ -60,8 +62,8 @@ public class ResponderView implements java.util.Observer {
     private JPanel responderPanel;
     private mvc.WERSController controller;
     private ResponderView view;
-    // CHANGED for OBSERVER IMPLEMENTATION
     private AdminView adminView;
+    private Plan
 
     public ResponderView() {
         System.out.println("View()" + this);
@@ -177,7 +179,7 @@ public class ResponderView implements java.util.Observer {
 
         // model Pull - ignore obj and ask model for value,
         // un-comment next line to do Model Pull
-        // myTextField.setText("" + plan.getValue());
+       //myTextField.setText("" + obj.getValue());
 
         // model Push
         // parse obj not needed yet
@@ -194,10 +196,12 @@ public class ResponderView implements java.util.Observer {
      */
     public void addController(WERSController myController) {
         view.controller = myController;
+        
         System.out.println("View      : adding controller " + controller);
         // button.addActionListener(myController); // need instance of
         // controller before we can reference it
     }
+    
 
     public JPanel getResponderPanel() {
         return responderPanel;
