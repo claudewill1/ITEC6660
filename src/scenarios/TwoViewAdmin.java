@@ -63,7 +63,7 @@ public class TwoViewAdmin // CHANGED for OBSERVER IMPLEMENTATION there is no gen
         // lines below will not work until after week3 assignment
         // CHANGED for OBSERVER IMPLEMENTATION
         controller.setAdminView(av);
-        // av.addController(controller);
+        //av.addController(controller);
     }
 
     

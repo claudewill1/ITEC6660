@@ -26,7 +26,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import planning.SpillCase;
 
-import planning.SpillCase;
+
 
 /**
  * A simple responder view for use in development. major parts are: above: a
@@ -61,7 +61,6 @@ public class ResponderView implements java.util.Observer {
     private JPanel responderPanel;
     private mvc.WERSController controller;
     private ResponderView view;
-    private AdminView adminView;
 
     public ResponderView() {
         System.out.println("View()" + this);
@@ -194,12 +193,10 @@ public class ResponderView implements java.util.Observer {
      */
     public void addController(WERSController myController) {
         view.controller = myController;
-        
         System.out.println("View      : adding controller " + controller);
         // button.addActionListener(myController); // need instance of
         // controller before we can reference it
     }
-    
 
     public JPanel getResponderPanel() {
         return responderPanel;

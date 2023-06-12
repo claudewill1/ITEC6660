@@ -8,12 +8,6 @@ package mvc;
  *
  * @author claude
  */
-import java.util.ArrayList;
-import java.util.Observer;
-public class SubjectController {
-    ArrayList<Observer> list = new ArrayList<>();
+public class MaterialTree {
     
-    public void notifyObservers(String news){
-    
-    }
 }

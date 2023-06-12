@@ -25,7 +25,7 @@ public class AdminView implements java.util.Observer {
         // CHANGED for OBSERVER IMPLEMENTATION    
 	private JTextArea responseArea;
         // CHANGED for OBSERVER IMPLEMENTATION
-        private WERSController controller;
+        public WERSController controller;
         private AdminView adminView;
 /**
  * Construct an Administrator view

@@ -60,10 +60,12 @@ public class ResponderView implements java.util.Observer {
     private JTextField firstNameTextField;
     private JLabel lastNameLabel;
     private JPanel responderPanel;
+    private JTextField myTextField;
     private mvc.WERSController controller;
     private ResponderView view;
     private AdminView adminView;
-    private Plan
+    private Plan plan;
+    
 
     public ResponderView() {
         System.out.println("View()" + this);
@@ -171,15 +173,16 @@ public class ResponderView implements java.util.Observer {
      * capabilities here. Just push the message onto the text area.
      */
     public void update(Observable obs, Object obj) {
-
+        
         // who called us and what did they send?
         // CHANGED for OBSERVER IMPLEMENTATION
          System.out.println ("View      : Observable is " + obs.getClass() +
          ", object passed is " + obj.getClass());
 
         // model Pull - ignore obj and ask model for value,
-        // un-comment next line to do Model Pull
-       //myTextField.setText("" + obj.getValue());
+        //un-comment next line to do Model Pull
+        // not sure what to do here, there is no "getValue()" method in regards to any model, obj, or controller
+        //myTextField.setText("" + model.getValue());
 
         // model Push
         // parse obj not needed yet
