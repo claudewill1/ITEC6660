@@ -66,6 +66,8 @@ public class ResponsePlanThread implements Runnable {
         ResponsePlanThread planThread = new ResponsePlanThread(projectID1,planner1);
         ResponsePlanThread planThread2 = new ResponsePlanThread(projectID2,planner2);
         
+        
+        
         Thread thread1 = new Thread(planThread);
         Thread thread2 = new Thread(planThread2);
         

@@ -42,7 +42,8 @@ public class Plan extends java.util.Observable implements IPlan {
      * simple Factory Method Instructor note: comment out 'synchronized' to
      * restore the race condition
      */
-    public static Plan buildActionPlan(Planner planner,
+    // CHANGED FOR THREAD SAFETY IMPLEMENTATION
+    public static synchronized Plan buildActionPlan(Planner planner,
             Interview interview) {
         System.err.println("Building plan for " + interview);
         String contact = interview.firstName + " " + interview.lastName;
@@ -194,5 +195,32 @@ public class Plan extends java.util.Observable implements IPlan {
 
     public AreaInformation getAreaInfo() {
         return areaInfo;
+    }
+    // ADDED TO TEST THREAD SAFETY IMPLEMENTATION
+    public static void main(String[] args){
+        
+        SpillCase spill1 = SpillCase.acidChloride;
+        SpillCase spill2 = SpillCase.acidChloride;
+        
+        String[] inputsA = {"Bob","Wallace","Build 1","Room 101"};
+        String[] inputsB = {"Tom","Williams","Build 5","Room 110"};
+        
+        Interview int1 = new Interview(inputsA,spill1,1);
+        Interview int2 = new Interview(inputsB,spill2,2);
+        
+        Planner plan = new Planner();
+        
+        
+        ResponsePlanThread thread1 = new ResponsePlanThread(12345,plan);
+        ResponsePlanThread thread2 = new ResponsePlanThread(23456,plan);
+        
+        Thread t1 = new Thread(thread1);
+        Thread t2 = new Thread(thread2);
+        try{
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
