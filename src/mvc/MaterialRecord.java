@@ -7,7 +7,17 @@ package mvc;
 /**
  *
  * @author claude
+ * // CHANGED FOR ITERATOR AND COMPOSITE IMPLEMENTATION
  */
-public class MaterialRecord {
-    
-}
+final public class MaterialRecord {
+		public int building;
+		public int room;
+		public String material;
+		
+		public MaterialRecord(int bldg, int rm, String matrl){
+			building = bldg;
+			room = rm;
+			material = matrl;
+		}
+                
+	}

@@ -10,6 +10,6 @@ package mvc;
  * 
  * ADDED / CHANGED for ITERATOR AND COMPOSITE IMPLEMENTATION
  */
-public class Materials extends Buildings {
+public class Rooms extends Buildings {
     
 }

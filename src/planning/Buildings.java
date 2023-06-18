@@ -7,6 +7,8 @@ package mvc;
 /**
  *
  * @author claude
+ * 
+ * ADDED / CHANGED for ITERATOR AND COMPOSITE IMPLEMENTATION
  */
 public class Buildings implements CampusInterface {
     

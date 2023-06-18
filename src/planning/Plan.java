@@ -12,7 +12,7 @@ import data.ResponderInformation;
  * Represents one plan for a single responder. Each plan is observable so that
  * the responder may view it in the (thus slightly modified)MVC pattern.
  */
-public abstract class Plan extends java.util.Observable implements IPlan {
+public class Plan extends java.util.Observable implements IPlan {
 
     public ResponseState state;
     public Interview interview;

@@ -8,6 +8,6 @@ package mvc;
  *
  * @author claude
  */
-public class Rooms extends Buildings {
+class MaterialStringCampus {
     
 }

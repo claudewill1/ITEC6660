@@ -2,6 +2,8 @@ package data;
 
 import java.util.Iterator;
 import java.util.Vector;
+import mvc.MaterialRecord;
+
 
 /**
  *  stands in for the database of materials stored on site
@@ -12,17 +14,7 @@ import java.util.Vector;
 
 public class MaterialDb {
 	
-	final static public class MaterialRecord {
-		public int building;
-		public int room;
-		public String material;
-		
-		MaterialRecord(int bldg, int rm, String matrl){
-			building = bldg;
-			room = rm;
-			material = matrl;
-		}
-	}
+	// CHANGED FOR ITERATOR AND COMPOSITE IMPLEMENTATION
 	
 
 	
@@ -43,18 +35,18 @@ public class MaterialDb {
 	 */
 	private static void loadDb() {
 		materials = new Vector<MaterialRecord>();
-		materials .add(new MaterialRecord(1, 101, "Antifreeze"));
-		materials .add(new MaterialRecord(1, 101, "Mercury"));
-		materials .add(new MaterialRecord(1, 101, "Alkalai Metal"));
-		materials .add(new MaterialRecord(1, 101, "Pesticides"));
-		materials .add(new MaterialRecord(1, 102, "Acid Chloride"));
-		materials .add(new MaterialRecord(1, 102, "Hydroflouric Acid"));
-		materials .add(new MaterialRecord(1, 102, "Phosphorous"));
-		materials .add(new MaterialRecord(2, 301, "Motor Oil"));
-		materials .add(new MaterialRecord(2, 301, "Antifreeze"));
-		materials .add(new MaterialRecord(2, 301, "Hydraulic Oil"));
-		materials .add(new MaterialRecord(3, 002, "Hydroflouric Acid"));
-		materials .add(new MaterialRecord(3, 002, "Solvents"));
+		materials.add(new MaterialRecord(1, 101, "Antifreeze"));
+		materials.add(new MaterialRecord(1, 101, "Mercury"));
+		materials.add(new MaterialRecord(1, 101, "Alkalai Metal"));
+		materials.add(new MaterialRecord(1, 101, "Pesticides"));
+		materials.add(new MaterialRecord(1, 102, "Acid Chloride"));
+		materials.add(new MaterialRecord(1, 102, "Hydroflouric Acid"));
+		materials.add(new MaterialRecord(1, 102, "Phosphorous"));
+		materials.add(new MaterialRecord(2, 301, "Motor Oil"));
+		materials.add(new MaterialRecord(2, 301, "Antifreeze"));
+		materials.add(new MaterialRecord(2, 301, "Hydraulic Oil"));
+		materials.add(new MaterialRecord(3, 002, "Hydroflouric Acid"));
+		materials.add(new MaterialRecord(3, 002, "Solvents"));
 	
 	}
 

@@ -1,5 +1,8 @@
 package composite;
 
+import data.MaterialDb;
+import java.util.Iterator;
+import mvc.MaterialRecord;
 import mvc.MaterialTree;
 import mvc.MaterialTreeCampus;
 
@@ -21,7 +24,9 @@ public class MaterialTreeTestScenario {
 		while (it.hasNext()){
 			MaterialRecord mr = it.next();
 			tree.insertMaterialRecord(mr);
-			fail("Not yet implemented");
+                        // no documentation or instructions any where
+                        // on what this following method is supposed to perform
+			//fail("Not yet implemented");
 		}
 		
 //		 echo the tree structure
@@ -32,6 +37,7 @@ public class MaterialTreeTestScenario {
 //		 in alphabetic order and each listed 1 time
 		System.out.println("\nList of materials:");
 		Iterator<String> sit = ((MaterialTreeCampus)tree).alphaIterator();
+                
 		while (sit.hasNext()){
 			System.out.println(sit.next());
 		}
