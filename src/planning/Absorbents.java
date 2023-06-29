@@ -1,17 +1,15 @@
-package planning;
+ package planning;
 
 /**
  * 
  * List of absorbents OK for a spilled material.
  *
  */
-public class Absorbents {
+public abstract class Absorbents {
 	
 	protected String [] absorbents;
 	
-	protected void setAbsorbents(String [] items){
-		absorbents = items;
-	}
+	protected abstract void setAbsorbents();
 	
 	public String toString() {
 		String rslt = new String("\n");

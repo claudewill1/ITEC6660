@@ -12,7 +12,7 @@ import data.ResponderInformation;
  * Represents one plan for a single responder. Each plan is observable so that
  * the responder may view it in the (thus slightly modified)MVC pattern.
  */
-public class Plan extends java.util.Observable implements IPlan {
+public class Plan extends java.util.Observable implements Runnable {
 
     public ResponseState state;
     public Interview interview;
@@ -25,12 +25,64 @@ public class Plan extends java.util.Observable implements IPlan {
     public Vector<String> notifications;
     private AreaInformation areaInfo;
     protected String responsibleParty;
+    private static Planner planner;
     
     // CHANGED FOR ABSTRACT FACTORY IMPLEMENTATION
-    public Plan createPlan(Interview interview) {
-        PlanFactory factory = new PlanFactory();
-        Plan plan = factory.createPlan(interview);
-        return plan;
+    public Plan(Interview interview) {
+        state = ResponseState.immediate;
+        this.interview = interview;
+        
+        responders = new Vector<ResponderInformation>();
+        location = "unknown";
+        immediateActions = new Vector<String>();
+        immediateActions.add("1. Notify lab personnel and neighbors of the accident.");
+        immediateActions.add("2. Isolate the area. Close lab doors and evacuate the immediate area if necessary.");
+        immediateActions.add("3. Remove ignition sources and unplug nearby electrical equipment.");
+        immediateActions.add("4. Establish exhaust ventilation. Vent vapors to outside of building only (open windows and turn on fume hoods.");
+
+        containActions = new Vector<String>();
+        containActions.add("5. Locate spill kit.");
+        containActions.add("6. Choose appropriate personal protective equipment (goggles, face shield, impervious gloves, lab coat, apron, etc.) Note: All lab personnel MUST be properly fit tested before using a respirator. Contact EH&S (855-6311) for more information.()");
+        containActions.add("7. Confine and contain spill. Cover with appropriate absorbent material. Acid and base spills should be neutralized prior to cleanup. Sweep solid material into a plastic dust pan and place in a sealed 5 gallon container.)");
+        containActions.add("8. Wet mop spill area. Be sure to decontaminate broom, dustpan, etc. Put all contaminated items (gloves, clothing, etc.) into a sealed 5 gallon container or plastic bag. Bring all waste to the next Waste Open House or call EH&S if a special pickup is necessary.");
+       
+        AbstractFactory absorbFactory = ProductFactory.getFactory("Absorbents");
+        AbstractFactory cautionFactory = ProductFactory.getFactory("cautions");
+        absorbents = absorbFactory.getAbsorbents(interview.materialSpilled);
+        cautions = cautionFactory.getCautions(interview.materialSpilled);
+        
+//        if(interview.materialSpilled.equals(SpillCase.acidChloride)){
+//            
+//            absorbents.setAbsorbents();
+//            cautions.setCautions();
+//        } else {
+//            absorbents.setAbsorbents();
+//            cautions.setCautions();
+//        }
+        
+        // original code
+//         if (interview.materialSpilled.equals(SpillCase.acidChloride)) {
+//            String[] aa = {"oil-dri", "zorb-al", "dry sand"};
+//            absorbents = new Absorbents();
+//            absorbents.setAbsorbents(aa);
+//            String[] ac = {"avoid water", "avoid sodium bicarbonate"};
+//            cautions = new Cautions();
+//            cautions.setCautions(ac);
+//        } else {
+//            String[] ga = {"1:1:1 mixture of Flor-Dri (or unscented kitty litter), sodium bicarbonate, and sand"};
+//            absorbents = new Absorbents();
+//            absorbents.setAbsorbents(ga);
+//            String[] gc = {""};
+//            cautions = new Cautions();
+//            cautions.setCautions(gc);
+//        }
+
+        notifications = new Vector<String>();
+        if (getAreaInfo() != null) {
+            responsibleParty = getAreaInfo().getResponsibleParty();
+        }
+        notifications.add(responsibleParty);
+        
 
     }
 
@@ -45,6 +97,7 @@ public class Plan extends java.util.Observable implements IPlan {
     // CHANGED FOR THREAD SAFETY IMPLEMENTATION
     public static synchronized Plan buildActionPlan(Planner planner,
             Interview interview) {
+        Plan.planner = new Planner();
         System.err.println("Building plan for " + interview);
         String contact = interview.firstName + " " + interview.lastName;
         Plan p = null;
@@ -53,8 +106,8 @@ public class Plan extends java.util.Observable implements IPlan {
             // responder found
             if (r.capabilities().contains(Capability.chemicalResponder)) {
                 // is a qualified chemical responder
-                // CHANGED FOR ABSTRACCT FACTOR IMPLEMENTATION
-                p.createPlan(interview);
+                
+                p = new Plan(interview);
                 p.setAreaInfo(planner.findArea(interview.room,
                         interview.building));
             } else {
@@ -160,7 +213,7 @@ public class Plan extends java.util.Observable implements IPlan {
         setChanged();
         notifyObservers(this.toString());
         // if using Model Pull, then can use notifyObservers()
-        notifyObservers();
+        // notifyObservers();
     }
 
     public String getLocation() {
@@ -196,31 +249,59 @@ public class Plan extends java.util.Observable implements IPlan {
     public AreaInformation getAreaInfo() {
         return areaInfo;
     }
+    
+    
     // ADDED TO TEST THREAD SAFETY IMPLEMENTATION
-    public static void main(String[] args){
+//    public static void main(String[] args){
+//      Planner planner = Planner.getThePlanner();
+//        // creating two spills
+//        SpillCase spill1 = SpillCase.acidChloride;
+//        SpillCase spill2 = SpillCase.acidChloride;
+//        // creating two arrays of input for the interview
+//        String[] inputsA = {"Bob","Wallace","1","101"};
+//        String[] inputsB = {"Tom","Williams","3","101"};
+//        // creating two interviews
+//        Interview int1 = new Interview(inputsA,spill1,1);
+//        Interview int2 = new Interview(inputsB,spill2,2);
+//        
+//        // create two ResponsePlanTread Objects
+//        ResponsePlanThread thread1 = new ResponsePlanThread(12345,planner);
+//        ResponsePlanThread thread2 = new ResponsePlanThread(23456,planner);
+//        // Initiating separate threads
+//        Thread t1 = new Thread(thread1);
+//        Thread t2 = new Thread(thread2);
+//        // start both threads
+//        t1.start();
+//        t2.start();
+//        
+//        try{
+//            // wait for both threads to complete through the use of the Thread join() method
+//            t1.join();
+//            t2.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        // access plans from Planner instance to check the assigned spill kits
+//        Plan planA = planner.getPlan(inputsA, spill1, 50);
+//        Plan planB = planner.getPlan(inputsB, spill2, 25);
+//        
+//        System.out.println("Spill kit assigned for plan1: "+planA.getAreaInfo().nearSpillKit());
+//        System.out.println("Spill kit assigned for plan1: "+planA.getAreaInfo().nearSpillKit());
+//        if(planA == planB || planA.getAreaInfo().nearSpillKit().equals(planB.getAreaInfo().nearSpillKit())){
+//            System.err.println("Same spill kit used twice");
+//        }
+//    }  
+   
+    
+    // CHANGED for THREAD SAFETY IMPLEMENTATION
+    @Override
+    public void run() {
+        Thread t = Thread.currentThread();
         
-        SpillCase spill1 = SpillCase.acidChloride;
-        SpillCase spill2 = SpillCase.acidChloride;
+        System.err.println("The thread name " + t.getName());
+        System.err.println("The process id " + t.getId());
         
-        String[] inputsA = {"Bob","Wallace","Build 1","Room 101"};
-        String[] inputsB = {"Tom","Williams","Build 5","Room 110"};
-        
-        Interview int1 = new Interview(inputsA,spill1,1);
-        Interview int2 = new Interview(inputsB,spill2,2);
-        
-        Planner plan = new Planner();
-        
-        
-        ResponsePlanThread thread1 = new ResponsePlanThread(12345,plan);
-        ResponsePlanThread thread2 = new ResponsePlanThread(23456,plan);
-        
-        Thread t1 = new Thread(thread1);
-        Thread t2 = new Thread(thread2);
-        try{
-            t1.join();
-            t2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.err.println("Thread running "+planner.getClass().toString());
+        System.err.println("The thread has exited");
     }
 }

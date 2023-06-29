@@ -12,6 +12,9 @@ import junit.framework.TestCase;
  */
 public class UniqueSpillKitTest extends TestCase {
     
+    public void main(String[] args){
+        testCheckUniqueSpillKit();
+    }
     public UniqueSpillKitTest(String testName) {
         super(testName);
     }
@@ -45,7 +48,7 @@ public class UniqueSpillKitTest extends TestCase {
         // lastName, firstName, building, room, materialSpilled
         String[] interview = {"Smith", "Bill", "1", "102"};
         // small spill responded to by known person
-        SpillCase material = SpillCase.standard;
+        SpillCase material = SpillCase.acidChloride;
         int sz = 12;
         // even the same spill should receive two different spill kits
         Plan p1 = planner.getPlan(interview, material, sz);

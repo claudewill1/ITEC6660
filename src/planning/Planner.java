@@ -41,23 +41,24 @@ public class Planner {
 		defaultResponders.add(r);
 		theDefaultPlan = new DefaultPlan();
 	}
-
+        
+        
 	// return the singleton planner - creating a planner if none exists
-	public static Planner getThePlanner() {
+	public static synchronized Planner getThePlanner() {
 		if (thePlanner == null)
 			thePlanner = new Planner();
 		return thePlanner;
 	}
-
+        // CHANGED for THREAD SAFETY IMPLEMENTATION
 	// return a plan from information given for interview
 	// used by unit tests
-	public Plan getPlan(String[] inputs, SpillCase spill, int sz) {
+	public synchronized Plan getPlan(String[] inputs, SpillCase spill, int sz) {
 		Interview interview = new Interview(inputs, spill, sz);
 		return getPlan(interview);
 	}
-
+        // CHANGED for THREAD SAFETY IMPLEMENTATION
 	// returns a plan determined by contents of the interview
-	private Plan getPlan(Interview interview) {
+	private synchronized Plan getPlan(Interview interview) {
 		Plan p = Plan.buildActionPlan(this, interview);
 		plans.add(p);
 		return p;

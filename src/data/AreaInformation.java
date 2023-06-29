@@ -11,5 +11,9 @@ public interface AreaInformation {
     String getResponsibleParty();
     String getPhone();
     String nearSpillKit();
+
+    
+
+    
     
 }

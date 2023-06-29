@@ -4,13 +4,11 @@ package planning;
  * List of special cautions for a spilled material.
  *
  */
-public class Cautions {
+public abstract class Cautions {
 
     protected String[] cautions;
-
-    protected void setCautions(String[] items) {
-        cautions = items;
-    }
+    // changed for abstract implementation - fixing for unit 7
+    protected abstract void setCautions();
 
     public String toString() {
         String rslt = new String("\n");

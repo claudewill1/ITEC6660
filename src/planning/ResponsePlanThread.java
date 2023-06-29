@@ -31,8 +31,8 @@ public class ResponsePlanThread implements Runnable {
             // output thread information
             System.err.println("Thread " + Thread.currentThread().getId() + " started\nProject ID: "+projID+"\nPlanner: "+planner.toString());
             // dummy data for creating interview
-            String[] input = {"Bob","Jones","Building 2","Room 1"};
-            String[] input2 = {"John","Woodward","Build 5","Room 105"};
+            String[] input = {"Bob","Jones","Building 2","Room 101"};
+            String[] input2 = {"John","Woodward","Build 5","Room 305"};
             String[] input3 = {"Tom","Williams","Building 4","Room 106"};
             SpillCase material = SpillCase.acidChloride;
             SpillCase material2 = SpillCase.standard;
